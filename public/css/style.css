@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'museo';
+  src: url("../fonts/museo.eot");
+  src: url("../fonts/museo.eot?#iefix") format("embedded-opentype"), 
+       url("../fonts/museo.woff") format("woff"), 
+       url("../fonts/museo.ttf") format("truetype"), 
+       url("../fonts/museo.svg#") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+
 body {
   border-top:4px solid #576A9F;
   background: url('../images/bg.png');
