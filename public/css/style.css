@@ -1,0 +1,177 @@
+body {
+  border-top:4px solid #576A9F;
+  background: url('../images/bg.png');
+  width: 100%;
+  font-size:14px;
+  color:#41403d;
+}
+
+a {
+  color:#576A9F;
+}
+
+a:hover {
+  color:#FEF5F1;
+}
+
+#main {
+  width:980px;
+  margin:0 auto;
+}
+
+header {
+  text-align: center;
+  height:85px;
+  width:235px;
+  border-radius:10px;
+  background:#FEF5F1;
+  margin:25px auto;
+  -webkit-box-shadow: -2px 2px 6px 2px #41403d;
+  -moz-box-shadow: -2px 2px 6px 2px #41403d;
+  box-shadow: -1px 1px 6px 2px #41403d;
+}
+
+header h1 {
+  font-size: 4.5em;
+  font-family:"museo", helvetica, sans-serif;
+  font-weight:100;
+  color:#576A9F;
+}
+
+header h1 a:link, header h1 a:visited {
+  color:#576A9F;
+  text-decoration: none;
+}
+
+#head_bg {
+  width:100%;
+  height:30px;
+  background:#FEF5F1;
+  position:absolute;
+  top:55px;
+  z-index:-1;
+  left:0;
+}
+
+section#add, section#edit, section#delete {
+  width:720px;
+  margin:0 auto;
+}
+
+section#edit, section#edit a, section#edit label,
+section#delete, section#delete a, section#delete label {
+  text-align:center;
+  color:#FEF5F1;
+}
+
+input {
+  margin:5px 0;
+}
+
+footer {
+  clear:both;
+  color:#FEF5F1;
+  width:100%;
+}
+
+footer p {
+  width:980px;
+  margin:20px auto;
+  text-align:center;
+}
+
+#note_input {
+  width:590px;
+  height:30px;
+  border:none;
+  border-radius:10px;
+  background:#FEF5F1;
+  margin:5px auto;
+  padding:5px 10px;
+  font-family:"museo", helvetica, sans-serif;
+  font-weight:100;
+  font-size:1.2em;
+  color:#576A9F;
+}
+
+#note_input:focus {
+  border:none;
+  outline-width:0;
+}
+
+#note_submit {
+  font-family:"museo", helvetica, sans-serif;
+  font-weight:100;
+  font-size:1.2em;
+  color:#FEF5F1;
+  margin-left:5px;
+  height:40px;
+  width:100px;
+  background:#576A9F;
+  border:4px solid #D4D4D4;
+  border-radius:10px;
+}
+
+#edit_submit {
+  font-family:"museo", helvetica, sans-serif;
+  font-weight:100;
+  font-size:1.2em;
+  color:#FEF5F1;
+  margin-left:5px;
+  height:40px;
+  width:100px;
+  background:#576A9F;
+  border:4px solid #D4D4D4;
+  border-radius:10px;
+}
+
+#note_submit:hover, #edit_submit:hover {
+  color:#41403D;
+}
+
+article {
+  background:#FEF5F1;
+  padding:10px;
+  border-radius:10px;
+  width:700px;
+  min-height:70px;
+  margin:20px auto;
+  position:relative;
+}
+
+article p {
+  color:#576A9F;
+  margin:5px 0;
+}
+
+span#note_number {
+  color:#41403d;
+  font-weight:500;
+  font-family:"museo slab";
+}
+
+a#star {
+  position:absolute;
+  top:5px;
+  right:5px;
+  text-decoration:none;
+  font-size:1.5em;
+}
+
+p.meta {
+  position:absolute;
+  bottom:10px;
+  left:10px;
+}
+
+span#edit {
+  position:absolute;
+  bottom:10px;
+  right:10px;
+}
+
+label#complete {
+  color:#576A9F;
+  font-family:"museo", helvetica;
+}
+

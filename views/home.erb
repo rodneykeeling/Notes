@@ -1,0 +1,21 @@
+<section id="add">
+<form action="/" method="post">
+  <input type="text" name="content" placeholder="<%= @list_idea %>" id="note_input" />
+  <input type="submit" value="Add note!" id="note_submit" />
+</form>
+</section>
+
+<% @notes.each do |note| %>
+  <article <%= 'class="complete"' if note.complete %>>
+    <span id="note_number">Note #<%= note.id %></span>
+    <p>
+      <%=h note.content %>
+      <span id="edit"><a href="/<%= note.id %>">edit</a></span>
+    </p>
+    <a href="/<%= note.id %>/complete" id="star"><%= '&#9734;' unless note.complete %></a>
+    <a href="/<%= note.id %>/complete" id="star"><%= '&#9733;' if note.complete %></a>
+    <p class="meta">
+      <%= note.created_at.strftime("%d %B %Y, %I:%M%p") %>
+    </p>
+  </article>
+<% end %>

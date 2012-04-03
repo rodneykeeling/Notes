@@ -1,0 +1,13 @@
+<section id="edit">
+<% if @note %>
+  <form action="/<%= @note.id %>" method="post" id="edit">
+    <input type="hidden" name="_method" value="put" />
+    <input type="text" name="content" id="note_input" value="<%=h @note.content %>" /><br />
+    <label for="complete" id="complete">Completed? </label><input type="checkbox" name="complete" id="complete" <%= "checked" if @note.complete %> /><br />
+    <input type="submit" id="edit_submit" />
+  </form>
+  <p><a href="/<%= @note.id %>/delete">Delete</a></p>
+<% else %>
+  <p>Note not found.</p>
+<% end %>
+</section>

@@ -1,0 +1,26 @@
+<!doctype html public "✰">
+<!--[if lt IE 7]> <html lang="en-us" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-us" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title dir="ltr"><%= @title %> | Notes</title>
+  <meta name="viewport" content="width=device-width">
+  <link href="/css/reset.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1><a href="/">Notes</a></h1>
+  </header>
+  <div id="head_bg"></div>
+  <div id="main">
+    <%= yield %>
+  </div>
+  <footer>
+    <p>Built by Rodney Keeling with <a href="http://www.sinatrarb.com">Sinatra</a>.</p>
+  </footer>
+</body>
+</html>
