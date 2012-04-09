@@ -1,7 +1,30 @@
+enable :sessions
+
 # GET requests
 
 # home
 get '/' do
+  if is_logged_in?
+    @notes = Note.all user: get_user, order: :id.desc
+  else
+    @notes = Note.all order: :id.desc 
+  end
+  @title = 'All Notes'
+  @list_idea = ['Buy milk.', 
+                'Do your homework.', 
+                'Clean your room.',
+                'Send flowers to your mom.',
+                'Feed the dog.'].sample
+  erb :home
+end
+
+get '/login' do
+  erb :login
+end
+
+get '/logout' do
+  clear_session
+  @message = "You've been logged out."
   @notes = Note.all order: :id.desc
   @title = 'All Notes'
   @list_idea = ['Buy milk.', 
@@ -12,26 +35,40 @@ get '/' do
   erb :home
 end
 
-# edit note
-get '/:id' do
-  @note = Note.get params[:id]
-  @title = "Edit note ##{params[:id]}"
-  erb :edit
+get '/signup' do
+  erb :signup
 end
 
-# delete note
+# edit note
+get '/:id' do
+  if is_logged_in?
+    @note = Note.get params[:id]
+    @title = "Edit note ##{params[:id]}"
+    erb :edit
+  else
+    erb :home
+  end
+end
+
+# delete note page
 get '/:id/delete' do
-  @note = Note.get params[:id]
-  @title = "Delete note ##{params[:id]}"
-  erb :delete
+  if is_logged_in?
+    @note = Note.get params[:id]
+    @title = "Delete note ##{params[:id]}"
+    erb :delete
+  else
+    erb :home
+  end
 end
 
 # mark note as complete
 get '/:id/complete' do
-  n = Note.get params[:id]
-  n.complete = n.complete ? 0 : 1
-  n.updated_at = Time.now
-  n.save
+  if is_logged_in?
+    n = Note.get params[:id]
+    n.complete = n.complete ? 0 : 1
+    n.updated_at = Time.now
+    n.save
+  end
   redirect '/'
 end
 
@@ -40,24 +77,60 @@ end
 
 # insert new note
 post '/' do
-  n = Note.new
-  n.content = params[:content]
-  n.created_at = Time.now
-  n.updated_at = Time.now
-  n.save
+  if is_logged_in?
+    n = Note.new
+    n.content = params[:content]
+    n.user = get_user
+    n.created_at = Time.now
+    n.updated_at = Time.now
+    n.save
+  end
   redirect '/'
 end
 
+post '/login' do
+  @title = 'All Notes'
+  @list_idea = ['Buy milk.', 
+                'Do your homework.', 
+                'Clean your room.',
+                'Send flowers to your mom.',
+                'Feed the dog.'].sample
+  if(validate(params["username"], params["password"]))
+    session["logged_in"] = true
+    session["username"] = params["username"]
+    @message = "You've been logged in.  Welcome back, #{params["username"]}"
+    @notes = Note.all user: get_user, order: :id.desc
+    erb :home
+  else
+    puts "error"
+    @error_message = "Sorry, those credentials aren't valid."
+    @notes = Note.all order: :id.desc
+    erb :home
+  end
+end
+
+post '/signup' do
+  @title = 'My Notes'
+  #create_user(params["username"], params["password"])
+  u = User.new
+  u.name = params["username"]
+  u.password = params["password"]
+  u.save
+  erb :login
+end
 
 # PUT requests
 
 # get note
 put '/:id' do
-  n = Note.get params[:id]
-  n.content = params[:content]
-  n.complete = params[:complete] ? 1 : 0
-  n.updated_at = Time.now
-  n.save
+  if is_logged_in?
+    n = Note.get params[:id]
+    n.content = params[:content]
+    n.user = get_user
+    n.complete = params[:complete] ? 1 : 0
+    n.updated_at = Time.now
+    n.save
+  end
   redirect '/'
 end
 
@@ -66,8 +139,10 @@ end
 
 # delete note
 delete '/:id' do
-  n = Note.get params[:id]
-  n.destroy
+  if is_logged_in?
+    n = Note.get params[:id]
+    n.destroy
+  end
   redirect '/'
 end
 
