@@ -28,7 +28,6 @@ helpers do
   def validate(user, password)
     u = User.first name: user
     return u.password == password
-    #return user == 'rodney' && password == 'rodney'
   end
   def is_logged_in?
     session["logged_in"] == true
@@ -42,7 +41,7 @@ helpers do
     if is_logged_in? 
       session["username"] 
     else
-      "not logged in"
+      "<a href=\"/login\">Login</a> or <a href=\"/signup\">Sign up</a>"
     end
   end
 

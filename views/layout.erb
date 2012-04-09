@@ -14,7 +14,8 @@
 <body>
   <header>
     <h1><a href="/">Notes</a></h1>
-    <span><%= get_user %></span>
+    <span id="username"><%= is_logged_in? ? "Welcome, #{get_user}" : get_user %></span>
+    <span id="logout"><%= "<a href=\"/logout\">Logout</a>" if is_logged_in? %></span>
   </header>
   <div id="head_bg"></div>
   <div id="main">

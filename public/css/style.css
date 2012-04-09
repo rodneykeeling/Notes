@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-  color:#FEF5F1;
+  color:#41403d;
 }
 
 #main {
@@ -31,6 +31,7 @@ a:hover {
 }
 
 header {
+  position:relative;
   text-align: center;
   height:85px;
   width:235px;
@@ -186,3 +187,21 @@ label#complete {
   font-family:"museo", helvetica;
 }
 
+span#username {
+position:absolute;
+left:-200px;
+top:33px;
+width:150px;
+color:#41403d;
+}
+
+span#logout {
+position:absolute;
+left:275px;
+top:33px;
+}
+
+div#login, div#signup {
+margin:0 auto;
+width:200px;
+}
