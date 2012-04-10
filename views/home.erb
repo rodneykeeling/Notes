@@ -10,7 +10,7 @@
     <span id="note_number">Note #<%= note.id %></span>
     <p>
       <%=h note.content %>
-      <span id="edit"><a href="/<%= note.id %>">edit</a></span>
+      <%= "<span id=\"edit\"><a href=\"/#{note.id}\">edit</a></span>" if is_logged_in? %>
     </p>
     <a href="/<%= note.id %>/complete" id="star"><%= note.complete ? '&#9733;' : '&#9734;' %></a>
     <p class="meta">

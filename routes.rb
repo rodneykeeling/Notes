@@ -55,6 +55,7 @@ get '/:id' do
     @title = "Edit note ##{params[:id]}"
     erb :edit
   else
+    @note = Note.all order: :id.desc
     erb :home
   end
 end
