@@ -18,7 +18,15 @@ get '/' do
   erb :home
 end
 
+get '/all-users' do
+  @title = 'All Users'
+  @users = User.all
+  erb :all
+end
+
+
 get '/login' do
+  @title = 'Login'
   erb :login
 end
 
@@ -36,6 +44,7 @@ get '/logout' do
 end
 
 get '/signup' do
+  @title = 'Sign up'
   erb :signup
 end
 
@@ -72,7 +81,6 @@ get '/:id/complete' do
   redirect '/'
 end
 
-
 # POST requests
 
 # insert new note
@@ -100,23 +108,22 @@ post '/login' do
     session["username"] = params["username"]
     @message = "You've been logged in.  Welcome back, #{params["username"]}"
     @notes = Note.all user: get_user, order: :id.desc
-    erb :home
+    redirect '/'
   else
     puts "error"
     @error_message = "Sorry, those credentials aren't valid."
     @notes = Note.all order: :id.desc
-    erb :home
+    redirect '/'
   end
 end
 
 post '/signup' do
   @title = 'My Notes'
-  #create_user(params["username"], params["password"])
   u = User.new
   u.name = params["username"]
   u.password = params["password"]
   u.save
-  erb :login
+  redirect '/login'
 end
 
 # PUT requests
