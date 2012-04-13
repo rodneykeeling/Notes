@@ -13,7 +13,8 @@ get '/' do
   @list_idea = ['Buy milk.', 
                 'Do your homework.', 
                 'Clean your room.',
-                'Send flowers to your mom.',
+                'Send flowers to mom.',
+                'Do the dishes',
                 'Feed the dog.'].sample
   erb :home
 end

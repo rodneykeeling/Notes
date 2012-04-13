@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'sinatra'
 require 'bcrypt'
 require_relative 'config/db/database'
