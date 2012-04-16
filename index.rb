@@ -2,6 +2,7 @@
 
 require 'sinatra'
 require 'bcrypt'
+require 'json'
 require_relative 'config/db/database'
 require_relative 'routes'
 

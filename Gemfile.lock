@@ -62,4 +62,5 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   datamapper
+  json
   sinatra

@@ -25,6 +25,11 @@ get '/all-users' do
   erb :all
 end
 
+get '/:id.json' do
+  note = Note.get params[:id]
+  content_type :json
+  note.to_json
+end
 
 get '/login' do
   @title = 'Login'
