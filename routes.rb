@@ -25,10 +25,28 @@ get '/all-users' do
   erb :all
 end
 
+get '/all.json' do
+  note = Note.all order: :id.desc
+  content_type :json
+  note.to_json
+end
+
+get '/all.xml' do
+  note = Note.all order: :id.desc
+  content_type :xml
+  note.to_xml
+end
+
 get '/:id.json' do
   note = Note.get params[:id]
   content_type :json
   note.to_json
+end
+
+get '/:id.xml' do
+  note = Note.get params[:id]
+  content_type :xml
+  note.to_xml
 end
 
 get '/login' do
